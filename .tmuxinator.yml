@@ -1,0 +1,10 @@
+name: clog
+root: ./
+
+pre_window: nix develop --command ${SHELL}
+
+startup_window: editor
+
+windows:
+  - editor: nvim src/main.c src/clog.h
+  - run & build: clear
