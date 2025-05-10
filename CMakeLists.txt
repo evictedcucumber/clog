@@ -1,3 +1,28 @@
+cmake_minimum_required(VERSION 3.30)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+project(
+  clog
+  VERSION 1.0.0
+  LANGUAGES C CXX)
+
+add_compile_options(-Wall -Wextra -Werror -pedantic)
+
+file(GLOB_RECURSE SOURCE src/*.c)
+
+set(LIB_STATIC clog_static)
+add_library(${LIB_STATIC} STATIC ${SOURCE})
+set(LIB_SHARED clog_shared)
+add_library(${LIB_SHARED} SHARED ${SOURCE})
+
+target_include_directories(${LIB_STATIC} PUBLIC src)
+target_include_directories(${LIB_SHARED} PUBLIC src)
+
+set_target_properties(${LIB_STATIC} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
+                                               DEBUG_POSTFIX d)
+set_target_properties(${LIB_SHARED} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}
+                                               DEBUG_POSTFIX d)
 
 option(BUILD_TESTS "Build test exectuables" OFF)
 
