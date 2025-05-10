@@ -1,0 +1,7 @@
+---
+BasedOnStyle: llvm
+ColumnLimit: 80
+PointerAlignment: Left
+IndentWidth: 4
+TabWidth: 4
+...
